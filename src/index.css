@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #151312;
+    color: #e8e1df;
+    font-family: 'Hanken Grotesk', sans-serif;
+  }
+
+  h1, h2, h3, .font-playfair {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+/* Hide scrollbar for category tabs but keep functionality */
+.no-scrollbar::-webkit-scrollbar,
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar,
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 16px);
+}
+
+@keyframes subtlePulse {
+  0% { opacity: 0.82; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.02); }
+  100% { opacity: 0.82; transform: scale(1); }
+}
+
+.ambient-pulse {
+  animation: subtlePulse 12s infinite ease-in-out;
+}
+
+/* Material Symbols configuration */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+}
