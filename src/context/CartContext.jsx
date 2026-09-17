@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import confetti from 'canvas-confetti';
 
 const CartContext = createContext();
 
@@ -23,12 +24,12 @@ export const CartProvider = ({ children }) => {
           sizeName: 'Paquete Completo (5 comidas)',
           price: 650,
           quantity: 1,
-          image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80'
+          image: '/images/pack_congelados.jpg'
         },
         {
           cartId: 'item-demo-2',
           productId: 'mostachon-artesanal',
-          name: 'Mostachón de Fresa de la Casa',
+          name: 'Mostachón de Fresa Insignia',
           sizeName: 'Porción Individual',
           fruitName: 'Fresas Frescas Tradicionales',
           price: 140,
@@ -42,41 +43,10 @@ export const CartProvider = ({ children }) => {
   });
 
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
   const [selectedProductForModal, setSelectedProductForModal] = useState(null);
-  const [activeTab, setActiveTab] = useState('home'); // 'home' | 'menu' | 'cart' | 'tracking'
+  const [activeTab, setActiveTab] = useState('home'); // 'home' | 'menu'
   const [couponCode, setCouponCode] = useState('');
   const [discountPercent, setDiscountPercent] = useState(0);
-
-  // Active Order for Tracking View
-  const [activeOrder, setActiveOrder] = useState(() => {
-    try {
-      const savedOrder = localStorage.getItem('romi_active_order');
-      if (savedOrder) return JSON.parse(savedOrder);
-    } catch (e) {
-      console.error(e);
-    }
-    return {
-      orderId: 'ROMI-8924',
-      status: 'en_camino', // 'recibido' | 'cocina' | 'empaquetando' | 'en_camino' | 'entregado'
-      etaMinutes: 15,
-      driver: {
-        name: 'Carlos Mendoza',
-        vehicle: 'Moto Honda Cargo (Caja Térmica)',
-        plate: 'QROO-784-B',
-        rating: 4.95,
-        photo: '/images/driver_carlos.jpg',
-        phone: '+52 984 123 4567'
-      },
-      destination: 'Av. 10 Norte con Calle 12, Playa del Carmen Centro',
-      createdAt: new Date().toISOString(),
-      items: [
-        { name: '1x Volován de Jaiba', price: 85 },
-        { name: '1x Mostachón Artesanal (Fresas Frescas)', price: 140 }
-      ],
-      total: 225
-    };
-  });
 
   // Save cart changes
   useEffect(() => {
@@ -87,20 +57,10 @@ export const CartProvider = ({ children }) => {
     }
   }, [items]);
 
-  // Save order changes
-  useEffect(() => {
-    try {
-      localStorage.setItem('romi_active_order', JSON.stringify(activeOrder));
-    } catch (e) {
-      console.error(e);
-    }
-  }, [activeOrder]);
-
   const addToCart = (productConfig) => {
     const cartId = `${productConfig.productId}-${productConfig.sizeId || 'default'}-${productConfig.fruitId || 'none'}-${Date.now()}`;
     
     setItems((prevItems) => {
-      // Check if identical item exists
       const existingIndex = prevItems.findIndex(
         (i) =>
           i.productId === productConfig.productId &&
@@ -152,9 +112,9 @@ export const CartProvider = ({ children }) => {
     } else if (clean === 'VERACRUZ15') {
       setDiscountPercent(15);
       setCouponCode(clean);
-      return { success: true, message: '¡Cupón de bienvenida de Veracruz! 15% de descuento.' };
+      return { success: true, message: '¡Cupón de bienvenida! 15% de descuento.' };
     } else {
-      return { success: false, message: 'Cupón inválido o expirado.' };
+      return { success: false, message: 'Cupón no válido o expirado.' };
     }
   };
 
@@ -165,52 +125,64 @@ export const CartProvider = ({ children }) => {
 
   const subtotal = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const discount = (subtotal * discountPercent) / 100;
-  const deliveryFee = subtotal > 450 || subtotal === 0 ? 0 : 35;
+  const deliveryFee = subtotal >= 450 || subtotal === 0 ? 0 : 35;
   const total = Math.max(0, subtotal - discount + deliveryFee);
   const cartCount = items.reduce((sum, item) => sum + item.quantity, 0);
 
-  // Complete checkout & create live order
-  const placeOrder = ({ customerName, phone, address, notes, paymentMethod }) => {
-    const orderNumber = `ROMI-${Math.floor(1000 + Math.random() * 9000)}`;
-    const newOrder = {
-      orderId: orderNumber,
-      status: 'recibido',
-      etaMinutes: 25,
-      driver: {
-        name: 'Carlos Mendoza',
-        vehicle: 'Moto Honda Cargo (Caja Térmica)',
-        plate: 'QROO-784-B',
-        rating: 4.95,
-        photo: '/images/driver_carlos.jpg',
-        phone: '+52 984 123 4567'
-      },
-      customer: { customerName, phone, address, notes, paymentMethod },
-      destination: address || 'Playa del Carmen Centro',
-      createdAt: new Date().toISOString(),
-      items: items.map((i) => ({
-        name: `${i.quantity}x ${i.name} (${i.sizeName || ''}${i.fruitName ? ' - ' + i.fruitName : ''})`,
-        price: i.price * i.quantity
-      })),
-      subtotal,
-      discount,
-      deliveryFee,
-      total
-    };
+  // Send complete order via WhatsApp directly to Romi
+  const sendWhatsAppOrder = ({ customerName, address, paymentMethod, notes }) => {
+    const phone = '5212711049733';
+    const dateStr = new Date().toLocaleDateString('es-MX', {
+      weekday: 'long',
+      day: 'numeric',
+      month: 'long'
+    });
 
-    setActiveOrder(newOrder);
-    clearCart();
-    setIsCheckoutOpen(false);
-    setIsCartOpen(false);
-    setActiveTab('tracking');
+    let message = `¡Hola Romi! 👋 Me gustaría hacer el siguiente pedido de *Recuerdos con Sabor By Romi* (${dateStr}):\n\n`;
+    message += `📋 *DETALLE DEL PEDIDO:*\n`;
 
-    return orderNumber;
-  };
+    items.forEach((item, index) => {
+      message += `${index + 1}. *${item.quantity}x ${item.name}*\n`;
+      if (item.sizeName) {
+        message += `   • Porción: ${item.sizeName}\n`;
+      }
+      if (item.fruitName) {
+        message += `   • Guarnición/Detalle: ${item.fruitName}\n`;
+      }
+      if (item.instructions) {
+        message += `   • Nota: "${item.instructions}"\n`;
+      }
+      message += `   • Importe: $${(item.price * item.quantity).toFixed(2)} MXN\n`;
+    });
 
-  const updateOrderStatus = (newStatus) => {
-    setActiveOrder((prev) => ({
-      ...prev,
-      status: newStatus
-    }));
+    message += `\n💰 *RESUMEN DE PAGO:*\n`;
+    message += `• Subtotal: $${subtotal.toFixed(2)} MXN\n`;
+    if (discount > 0) {
+      message += `• Descuento (${couponCode} -${discountPercent}%): -$${discount.toFixed(2)} MXN\n`;
+    }
+    message += `• Envío (Playa del Carmen): ${deliveryFee === 0 ? '¡GRATIS!' : `$${deliveryFee.toFixed(2)} MXN`}\n`;
+    message += `• *TOTAL A PAGAR:* *$${total.toFixed(2)} MXN*\n\n`;
+
+    message += `📍 *DATOS PARA LA ENTREGA:*\n`;
+    message += `• Cliente: *${customerName || 'Por confirmar'}*\n`;
+    message += `• Dirección / Zona: *${address || 'Playa del Carmen (A convenir)'}*\n`;
+    message += `• Método de Pago: *${paymentMethod || 'Efectivo al recibir'}*\n`;
+    if (notes && notes.trim()) {
+      message += `• Especificaciones: ${notes.trim()}\n`;
+    }
+
+    message += `\nQuedo a la espera de su confirmación para prepararlo con mucho amor. ¡Muchas gracias! ❤️`;
+
+    try {
+      confetti({
+        particleCount: 80,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+    } catch {}
+
+    const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    window.open(waUrl, '_blank');
   };
 
   return (
@@ -232,15 +204,11 @@ export const CartProvider = ({ children }) => {
         removeCoupon,
         isCartOpen,
         setIsCartOpen,
-        isCheckoutOpen,
-        setIsCheckoutOpen,
         selectedProductForModal,
         setSelectedProductForModal,
         activeTab,
         setActiveTab,
-        activeOrder,
-        placeOrder,
-        updateOrderStatus
+        sendWhatsAppOrder
       }}
     >
       {children}

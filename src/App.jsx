@@ -4,10 +4,8 @@ import { TopAppBar } from './components/TopAppBar';
 import { BottomNavBar } from './components/BottomNavBar';
 import { HomeView } from './components/HomeView';
 import { MenuView } from './components/MenuView';
-import { OrderTrackingView } from './components/OrderTrackingView';
 import { ProductDetailModal } from './components/ProductDetailModal';
 import { CartDrawer } from './components/CartDrawer';
-import { CheckoutModal } from './components/CheckoutModal';
 import { FloatingWhatsAppCTA } from './components/FloatingWhatsAppCTA';
 
 const MainLayout = () => {
@@ -22,7 +20,6 @@ const MainLayout = () => {
       <main className={`flex-grow ${activeTab === 'home' ? 'pt-28 w-full' : 'pt-32 px-4 sm:px-6 md:px-8 max-w-[1360px] mx-auto w-full'}`}>
         {activeTab === 'home' && <HomeView />}
         {activeTab === 'menu' && <MenuView />}
-        {activeTab === 'tracking' && <OrderTrackingView />}
       </main>
 
       {/* Rich Editorial Footer */}
@@ -186,7 +183,6 @@ const MainLayout = () => {
       {/* Global Modals & Drawers */}
       <ProductDetailModal />
       <CartDrawer />
-      <CheckoutModal />
     </div>
   );
 };
