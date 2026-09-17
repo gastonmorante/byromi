@@ -18,19 +18,19 @@ export const CartProvider = ({ children }) => {
       return saved ? JSON.parse(saved) : [
         {
           cartId: 'item-demo-1',
-          productId: 'volovan-jaiba',
-          name: 'Volován de Jaiba a la Veracruzana',
-          sizeName: '1 Pieza Artesanal',
-          price: 85,
+          productId: 'pack-semana-ligera',
+          name: "Pack 'Semana Ligera & Sin Prisas'",
+          sizeName: 'Paquete Completo (5 comidas)',
+          price: 650,
           quantity: 1,
-          image: '/images/volovan_jaiba.jpg'
+          image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80'
         },
         {
           cartId: 'item-demo-2',
           productId: 'mostachon-artesanal',
-          name: 'Mostachón Artesanal',
+          name: 'Mostachón de Fresa de la Casa',
           sizeName: 'Porción Individual',
-          fruitName: 'Fresas Frescas',
+          fruitName: 'Fresas Frescas Tradicionales',
           price: 140,
           quantity: 1,
           image: '/images/mostachon_artesanal.jpg'

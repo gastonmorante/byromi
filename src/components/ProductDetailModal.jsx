@@ -145,14 +145,14 @@ export const ProductDetailModal = () => {
             {product.description}
           </p>
 
-          {/* Fruit Variations (if any) */}
+          {/* Fruit / Options Variations (if any) */}
           {product.fruitOptions && product.fruitOptions.length > 0 && (
             <div className="space-y-stack-sm pt-2">
               <h3 className="font-headline-md text-lg sm:text-xl text-on-surface font-semibold">
-                Variaciones de Fruta
+                {product.optionsTitle || 'Opciones & Complementos'}
               </h3>
               <p className="font-label-sm text-xs text-on-surface-variant uppercase tracking-wider mb-3">
-                Elige tu corona perfecta
+                Selecciona tu opción favorita
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {product.fruitOptions.map((fruit) => {
@@ -197,10 +197,10 @@ export const ProductDetailModal = () => {
           {product.sizes && product.sizes.length > 0 && (
             <div className="space-y-stack-sm pt-2">
               <h3 className="font-headline-md text-lg sm:text-xl text-on-surface font-semibold">
-                Tamaño del Pastel / Porción
+                {product.sizeTitle || 'Tamaño / Porción'}
               </h3>
               <p className="font-label-sm text-xs text-on-surface-variant uppercase tracking-wider mb-3">
-                Para cuántas personas
+                Elige la cantidad deseada
               </p>
               <div className="flex flex-col gap-3">
                 {product.sizes.map((size) => {

@@ -78,7 +78,7 @@ export const CartDrawer = () => {
               </div>
               <h3 className="font-headline-md text-lg text-on-surface mb-1">Tu carrito está vacío</h3>
               <p className="text-xs text-on-surface-variant max-w-xs mb-6">
-                Aún no has agregado los deliciosos postres o volovanes de Romi.
+                Aún no has agregado tus guisados caseros, pastas o postres de Romi.
               </p>
               <button
                 onClick={() => {
@@ -87,7 +87,7 @@ export const CartDrawer = () => {
                 }}
                 className="px-6 py-2.5 bg-primary-container text-surface-container-lowest font-headline-md text-xs uppercase tracking-wider font-semibold rounded-full hover:bg-primary transition-all shadow-md"
               >
-                Explorar Nuestra Repostería
+                Explorar Nuestro Menú
               </button>
             </div>
           ) : (

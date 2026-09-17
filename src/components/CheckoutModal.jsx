@@ -83,7 +83,7 @@ export const CheckoutModal = () => {
         `*TOTAL:* $${total.toFixed(2)} MXN\n\n` +
         `¡Muchas gracias por su preferencia!`;
 
-      const waUrl = `https://wa.me/529841234567?text=${encodeURIComponent(message)}`;
+      const waUrl = `https://wa.me/5212711049733?text=${encodeURIComponent(message)}`;
       window.open(waUrl, '_blank');
     }
 

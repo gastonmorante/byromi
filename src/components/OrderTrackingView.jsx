@@ -47,21 +47,21 @@ export const OrderTrackingView = () => {
   }, [order.status, eta]);
 
   const handleCallDriver = () => {
-    window.open(`tel:${order.driver.phone || '+529841234567'}`);
+    window.open(`tel:${order.driver.phone || '+5212711049733'}`);
   };
 
   const handleDriverWhatsApp = () => {
     const text = encodeURIComponent(
-      `¡Hola Carlos! Te contacto sobre mi pedido ${order.orderId} de Recuerdos con Sabor by Romi.`
+      `¡Hola! Te contacto sobre mi pedido ${order.orderId} de Recuerdos con Sabor By Romi.`
     );
-    window.open(`https://wa.me/529841234567?text=${text}`, '_blank');
+    window.open(`https://wa.me/5212711049733?text=${text}`, '_blank');
   };
 
   const handleSupportHelp = () => {
     const text = encodeURIComponent(
       `¡Hola Romi! Necesito asistencia con el seguimiento de mi pedido #${order.orderId}.`
     );
-    window.open(`https://wa.me/529841234567?text=${text}`, '_blank');
+    window.open(`https://wa.me/5212711049733?text=${text}`, '_blank');
   };
 
   return (
