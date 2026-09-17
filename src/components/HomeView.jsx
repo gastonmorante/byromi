@@ -144,7 +144,7 @@ export const HomeView = () => {
                     <img
                       alt="Pastel tres leches con dulce de leche artesanal y merengue tostado"
                       className="w-full h-full object-cover"
-                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxQoETJ1SZ-J0FEKW4KusreWovXXNFNTENF-XrDXwiBs6B_McUAJM3b9GjutQhomV15faT7oKR0cPzlFyoru_YOTKXx4Z0ywuOfcniX08SDt29zzH0nRSbJoEz7UTyi5khEzmj_2tD8UZlz48JBtjPOPoESORRzYLtpV4EZsK9C1MR75HP8daq516CZQBrsfe-m8sYNrTL8PygjsL4aMFByIkq-4Gts83hn96Xt2GUjYJ5DZ-q8bjc"
+                      src="/images/tres_leches_cake.jpg"
                     />
                     <div className="absolute top-1 right-1 bg-secondary text-on-secondary text-[10px] font-bold px-1.5 py-0.5 rounded-full uppercase">
                       Receta Abuela
@@ -176,63 +176,105 @@ export const HomeView = () => {
       {/* ========================================================================= */}
       {/* 2. VALUE PILLARS: Why choose By Romi (Honesty, Speed, Real Flavor)         */}
       {/* ========================================================================= */}
-      <section className="w-full bg-surface-container-low py-space-xl" id="nuestra-cocina">
+      <section className="w-full bg-surface-container-low py-space-xl lg:py-24" id="nuestra-cocina">
         <div className="max-w-[1360px] mx-auto px-margin-mobile lg:px-margin">
-          <div className="text-center max-w-2xl mx-auto mb-space-lg">
-            <span className="font-label-sm text-label-sm text-secondary uppercase tracking-widest font-bold">
+          <div className="text-center max-w-2xl mx-auto mb-space-lg lg:mb-16">
+            <span className="inline-block px-3.5 py-1 rounded-full bg-surface-container-high text-secondary text-xs tracking-widest uppercase font-bold mb-2 shadow-sm">
               CUIDAMOS CADA DETALLE
             </span>
-            <h2 className="font-headline-lg text-headline-lg-mobile lg:text-headline-lg text-primary mt-space-xs">
+            <h2 className="font-headline-lg text-headline-lg-mobile lg:text-headline-lg text-primary mt-1">
               Cocina honesta, sin atajos ni químicos
             </h2>
-            <p className="font-body-md text-body-md text-on-surface-variant mt-space-xs">
+            <p className="font-body-md text-body-md text-on-surface-variant mt-2 max-w-xl mx-auto leading-relaxed">
               Sabemos que el ritmo de la semana es demandante. Por eso preparamos cada guisado tal como lo harías tú en un domingo con tiempo libre.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-            {/* Pillar 1 */}
-            <div className="bg-surface-container-lowest p-space-lg rounded-2xl shadow-[0_4px_16px_-2px_rgba(59,39,30,0.05)] hover:shadow-[0_12px_28px_-4px_rgba(59,39,30,0.09)] transition-all flex flex-col gap-space-sm group border border-outline-variant/20">
-              <div className="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-on-secondary transition-colors">
-                <span className="material-symbols-outlined text-[26px]">skillet</span>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter lg:gap-8">
+            {/* Pillar 1: Sazón de Hogar Real */}
+            <div className="bg-surface-container-lowest rounded-3xl overflow-hidden shadow-[0_4px_20px_-2px_rgba(59,39,30,0.06)] hover:shadow-[0_16px_36px_-4px_rgba(59,39,30,0.12)] transition-all duration-500 flex flex-col group border border-outline-variant/20 hover:border-secondary/30">
+              <div className="relative aspect-[4/3] w-full overflow-hidden bg-surface-container">
+                <img
+                  src="/images/pilar_sazon_hogar.jpg"
+                  alt="Cazuela tradicional con guisado casero a fuego lento sobre mármol"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <span className="absolute top-3 left-3 bg-surface-container-lowest/90 backdrop-blur-md text-secondary font-label-sm text-xs font-bold px-3 py-1 rounded-full shadow-sm">
+                  100% Casero • A Fuego Lento
+                </span>
               </div>
-              <h3 className="font-title-md text-title-md text-primary font-semibold">Sazón de Hogar Real</h3>
-              <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-                Recetas familiares tradicionales de generaciones. Sofrito con jitomate maduro, caldos espesados a fuego lento y sazón equilibrada. Cero cubos concentrados o espesantes artificiales.
-              </p>
-              <div className="mt-auto pt-space-xs flex items-center gap-space-xs text-secondary font-label-md text-label-md">
-                <span>Sabor 100% auténtico</span>
-                <span className="material-symbols-outlined text-[16px]">check_circle</span>
+              <div className="p-space-lg flex flex-col flex-1 gap-space-sm">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary">
+                    <span className="material-symbols-outlined text-[20px]">skillet</span>
+                  </div>
+                  <h3 className="font-headline-sm text-xl text-primary font-bold">Sazón de Hogar Real</h3>
+                </div>
+                <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                  Recetas familiares tradicionales de generaciones. Sofrito con jitomate maduro, caldos espesados a fuego lento y sazón equilibrada. Cero cubos concentrados o espesantes artificiales.
+                </p>
+                <div className="mt-auto pt-space-xs flex items-center gap-space-xs text-secondary font-label-md text-label-md font-semibold">
+                  <span className="material-symbols-outlined text-[16px]">check_circle</span>
+                  <span>Sabor auténtico sin conservadores</span>
+                </div>
               </div>
             </div>
 
-            {/* Pillar 2 */}
-            <div className="bg-surface-container-lowest p-space-lg rounded-2xl shadow-[0_4px_16px_-2px_rgba(59,39,30,0.05)] hover:shadow-[0_12px_28px_-4px_rgba(59,39,30,0.09)] transition-all flex flex-col gap-space-sm group border border-outline-variant/20">
-              <div className="w-12 h-12 rounded-xl bg-primary-fixed flex items-center justify-center text-primary-container group-hover:bg-primary-container group-hover:text-on-primary transition-colors">
-                <span className="material-symbols-outlined text-[26px]">all_inclusive</span>
+            {/* Pillar 2: Del Congelador al Plato (Uploaded Reference Image) */}
+            <div className="bg-surface-container-lowest rounded-3xl overflow-hidden shadow-[0_4px_20px_-2px_rgba(59,39,30,0.06)] hover:shadow-[0_16px_36px_-4px_rgba(59,39,30,0.12)] transition-all duration-500 flex flex-col group border border-outline-variant/20 hover:border-secondary/30">
+              <div className="relative aspect-[4/3] w-full overflow-hidden bg-surface-container">
+                <img
+                  src="/images/bolsas_congelador_vacio.jpg"
+                  alt="Guisados congelados empacados al vacío marca By Romi con hierbas aromáticas sobre barra de mármol"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <span className="absolute top-3 left-3 bg-surface-container-lowest/90 backdrop-blur-md text-primary font-label-sm text-xs font-bold px-3 py-1 rounded-full shadow-sm">
+                  Sellado al Vacío • Grado Alimenticio
+                </span>
               </div>
-              <h3 className="font-title-md text-title-md text-primary font-semibold">Del Congelador al Plato</h3>
-              <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-                Olvídate de lavar ollas, deshebrar carne o picar cebolla un martes por la noche. Empacado al vacío grado alimenticio que bloquea el sabor fresco y se regenera en agua hirviendo o microondas.
-              </p>
-              <div className="mt-auto pt-space-xs flex items-center gap-space-xs text-primary font-label-md text-label-md">
-                <span>Sin trastes sucios en 8 min</span>
-                <span className="material-symbols-outlined text-[16px]">bolt</span>
+              <div className="p-space-lg flex flex-col flex-1 gap-space-sm">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-lg bg-primary-fixed flex items-center justify-center text-primary-container">
+                    <span className="material-symbols-outlined text-[20px]">ac_unit</span>
+                  </div>
+                  <h3 className="font-headline-sm text-xl text-primary font-bold">Del Congelador al Plato</h3>
+                </div>
+                <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                  Olvídate de lavar ollas, deshebrar carne o picar cebolla un martes por la noche. Empacado al vacío grado alimenticio que bloquea el sabor fresco y se regenera en agua hirviendo o microondas.
+                </p>
+                <div className="mt-auto pt-space-xs flex items-center gap-space-xs text-primary font-label-md text-label-md font-semibold">
+                  <span className="material-symbols-outlined text-[16px]">bolt</span>
+                  <span>Sin trastes sucios en 8-10 min</span>
+                </div>
               </div>
             </div>
 
-            {/* Pillar 3 */}
-            <div className="bg-surface-container-lowest p-space-lg rounded-2xl shadow-[0_4px_16px_-2px_rgba(59,39,30,0.05)] hover:shadow-[0_12px_28px_-4px_rgba(59,39,30,0.09)] transition-all flex flex-col gap-space-sm group border border-outline-variant/20">
-              <div className="w-12 h-12 rounded-xl bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed-variant group-hover:bg-tertiary-container group-hover:text-tertiary-fixed transition-colors">
-                <span className="material-symbols-outlined text-[26px]">savings</span>
+            {/* Pillar 3: Alta Calidad a Precio Justo */}
+            <div className="bg-surface-container-lowest rounded-3xl overflow-hidden shadow-[0_4px_20px_-2px_rgba(59,39,30,0.06)] hover:shadow-[0_16px_36px_-4px_rgba(59,39,30,0.12)] transition-all duration-500 flex flex-col group border border-outline-variant/20 hover:border-secondary/30">
+              <div className="relative aspect-[4/3] w-full overflow-hidden bg-surface-container">
+                <img
+                  src="/images/pilar_precio_justo.jpg"
+                  alt="Plato gourmet generoso con lomo de cerdo glaseado y puré de papa artesanal sobre mármol"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <span className="absolute top-3 left-3 bg-surface-container-lowest/90 backdrop-blur-md text-secondary font-label-sm text-xs font-bold px-3 py-1 rounded-full shadow-sm">
+                  Porciones Abundantes • Precio Justo
+                </span>
               </div>
-              <h3 className="font-title-md text-title-md text-primary font-semibold">Alta Calidad a Precio Justo</h3>
-              <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-                Porciones abundantes y sinceras (individuales y familiares de 1 Kg para compartir en casa). Costeo directo desde cocina de Romi, sin comisiones infladas del 30% de apps de delivery.
-              </p>
-              <div className="mt-auto pt-space-xs flex items-center gap-space-xs text-secondary font-label-md text-label-md">
-                <span>Comes rico, rindes más</span>
-                <span className="material-symbols-outlined text-[16px]">price_check</span>
+              <div className="p-space-lg flex flex-col flex-1 gap-space-sm">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-lg bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed-variant">
+                    <span className="material-symbols-outlined text-[20px]">restaurant</span>
+                  </div>
+                  <h3 className="font-headline-sm text-xl text-primary font-bold">Alta Calidad a Precio Justo</h3>
+                </div>
+                <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                  Porciones abundantes y sinceras (individuales y familiares de 1 Kg para compartir en casa). Costeo directo desde cocina de Romi, sin comisiones infladas del 30% de apps de delivery.
+                </p>
+                <div className="mt-auto pt-space-xs flex items-center gap-space-xs text-secondary font-label-md text-label-md font-semibold">
+                  <span className="material-symbols-outlined text-[16px]">price_check</span>
+                  <span>Comes rico, rindes más</span>
+                </div>
               </div>
             </div>
           </div>
@@ -291,7 +333,7 @@ export const HomeView = () => {
                 <img
                   alt="Tinga Casera de Pollo jugosa con chipotle suave"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSugj9dBZ6PEFWmtn-bDFJfy3dtwSqpz7Cb_z9GGuuHIseyV4Hc0thcCkQic-lJkJCIWgckpz6Hirii4WgrQGip0VnTy0pkQ9P9eTncOTtTzn9ooceGWn4gPYBCcL1mKihulaVgglCbdI_VR8meR1AsP9k9WvP5k7YqfaGblnkmI0Uxf-_woZCaDtoPEibQQE26Z_Nt9Ri6yhE_TdnyeBRNL5Y1KD2bbKgHf2vjy46e1bWKUMZxTc2"
+                  src="/images/cazuela_romi.jpg"
                 />
                 <span className="absolute top-2 left-2 bg-surface-container-lowest/90 backdrop-blur-sm text-primary text-label-sm font-label-sm font-bold px-2 py-0.5 rounded-full">
                   Individual / Kilo
@@ -332,7 +374,7 @@ export const HomeView = () => {
                 <img
                   alt="Lomo a la Coca-Cola Glaseada tierno"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80"
+                  src="/images/pilar_precio_justo.jpg"
                 />
                 <span className="absolute top-2 left-2 bg-secondary text-on-secondary text-label-sm font-label-sm font-bold px-2 py-0.5 rounded-full">
                   Más Vendido
@@ -373,7 +415,7 @@ export const HomeView = () => {
                 <img
                   alt="Pastel de Papa y Picadillo Casero dorado"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  src="https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80"
+                  src="/images/lasana_tradicional.jpg"
                 />
                 <span className="absolute top-2 left-2 bg-surface-container-lowest/90 backdrop-blur-sm text-primary text-label-sm font-label-sm font-bold px-2 py-0.5 rounded-full">
                   Favorito Familiar
@@ -483,7 +525,7 @@ export const HomeView = () => {
                   <img
                     alt="Pastel de tres leches con dulce de leche artesanal"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxQoETJ1SZ-J0FEKW4KusreWovXXNFNTENF-XrDXwiBs6B_McUAJM3b9GjutQhomV15faT7oKR0cPzlFyoru_YOTKXx4Z0ywuOfcniX08SDt29zzH0nRSbJoEz7UTyi5khEzmj_2tD8UZlz48JBtjPOPoESORRzYLtpV4EZsK9C1MR75HP8daq516CZQBrsfe-m8sYNrTL8PygjsL4aMFByIkq-4Gts83hn96Xt2GUjYJ5DZ-q8bjc"
+                    src="/images/tres_leches_cake.jpg"
                   />
                   <span className="absolute top-2 left-2 bg-secondary text-on-secondary text-label-sm font-label-sm font-bold px-2 py-0.5 rounded-full">
                     Especialidad de la Casa
@@ -571,7 +613,7 @@ export const HomeView = () => {
                   <img
                     alt="Pan de Elote Tierno recién horneado con aroma a maíz dulce"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80"
+                    src="/images/pan_elote.jpg"
                   />
                   <span className="absolute top-2 left-2 bg-surface-container-lowest/90 backdrop-blur-sm text-primary text-label-sm font-label-sm font-bold px-2 py-0.5 rounded-full">
                     100% Maíz Dulce Fresco
@@ -659,48 +701,60 @@ export const HomeView = () => {
       {/* ========================================================================= */}
       {/* 4. "CÓMO FUNCIONA": 3-Step Pragmatic Flow                                */}
       {/* ========================================================================= */}
-      <section className="w-full bg-surface-container py-space-xl">
+      <section className="w-full bg-surface-container-low py-space-xl lg:py-24">
         <div className="max-w-[1360px] mx-auto px-margin-mobile lg:px-margin">
-          <div className="text-center max-w-xl mx-auto mb-space-lg">
-            <span className="font-label-sm text-label-sm text-secondary uppercase tracking-widest font-bold">
+          <div className="text-center max-w-xl mx-auto mb-space-lg lg:mb-16">
+            <span className="inline-block px-3.5 py-1 rounded-full bg-surface-container-high text-secondary text-xs tracking-widest uppercase font-bold mb-2 shadow-sm">
               FÁCIL, PRÁCTICO Y SEGURO
             </span>
-            <h2 className="font-headline-lg text-headline-lg-mobile lg:text-headline-lg text-primary mt-space-xs">
+            <h2 className="font-headline-lg text-headline-lg-mobile lg:text-headline-lg text-primary mt-1">
               Cómo llega el apapacho a tu mesa
             </h2>
+            <p className="font-body-md text-body-md text-on-surface-variant mt-2 leading-relaxed">
+              Comer delicioso y casero entre semana nunca fue tan sencillo.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter relative">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter lg:gap-8">
             {/* Step 1 */}
-            <div className="bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm flex flex-col items-start gap-space-sm relative border border-outline-variant/20">
-              <div className="w-10 h-10 rounded-full bg-primary-container text-on-primary font-headline-sm text-headline-sm flex items-center justify-center font-bold">
-                1
+            <div className="bg-surface-container-lowest p-space-lg lg:p-8 rounded-3xl shadow-[0_4px_20px_-2px_rgba(59,39,30,0.05)] flex flex-col items-start gap-space-sm border border-outline-variant/20 hover:border-secondary/30 transition-all duration-300">
+              <div className="w-12 h-12 rounded-2xl bg-surface-container-high text-secondary flex items-center justify-center font-bold text-lg mb-1">
+                <span className="material-symbols-outlined text-[24px]">restaurant_menu</span>
               </div>
-              <h3 className="font-title-md text-title-md text-primary font-semibold">Elige tu menú semanal</h3>
+              <span className="text-xs font-bold uppercase tracking-wider text-secondary bg-surface-container-high px-2.5 py-0.5 rounded-full">
+                Paso 01
+              </span>
+              <h3 className="font-headline-sm text-xl text-primary font-bold">Elige tu menú semanal</h3>
               <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-                Navega por nuestra selección de guisados individuales o familiares y postres artesanales. Arma tu caja personalizada para resolver tus comidas o las de toda tu familia.
+                Navega por nuestra selección de guisados individuales o familiares y repostería casera. Arma tu pedido a la medida para resolver tus comidas o las de toda tu familia.
               </p>
             </div>
 
             {/* Step 2 */}
-            <div className="bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm flex flex-col items-start gap-space-sm relative border border-outline-variant/20">
-              <div className="w-10 h-10 rounded-full bg-secondary text-on-secondary font-headline-sm text-headline-sm flex items-center justify-center font-bold">
-                2
+            <div className="bg-surface-container-lowest p-space-lg lg:p-8 rounded-3xl shadow-[0_4px_20px_-2px_rgba(59,39,30,0.05)] flex flex-col items-start gap-space-sm border border-outline-variant/20 hover:border-secondary/30 transition-all duration-300">
+              <div className="w-12 h-12 rounded-2xl bg-primary-fixed text-primary-container flex items-center justify-center font-bold text-lg mb-1">
+                <span className="material-symbols-outlined text-[24px]">ac_unit</span>
               </div>
-              <h3 className="font-title-md text-title-md text-primary font-semibold">Recibe en frío seguro</h3>
+              <span className="text-xs font-bold uppercase tracking-wider text-primary bg-primary-fixed px-2.5 py-0.5 rounded-full">
+                Paso 02
+              </span>
+              <h3 className="font-headline-sm text-xl text-primary font-bold">Recibe en frío seguro</h3>
               <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-                Entregamos directo en tu puerta en Playa del Carmen con control de temperatura en bolsas selladas al vacío. Todo listo para ir directo a tu congelador.
+                Entregamos en tu puerta en Playa del Carmen con cadena de frío protegida en bolsas herméticas al vacío. Listas para guardar en tu congelador hasta por 90 días.
               </p>
             </div>
 
             {/* Step 3 */}
-            <div className="bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm flex flex-col items-start gap-space-sm relative border border-outline-variant/20">
-              <div className="w-10 h-10 rounded-full bg-tertiary-fixed text-primary font-headline-sm text-headline-sm flex items-center justify-center font-bold">
-                3
+            <div className="bg-surface-container-lowest p-space-lg lg:p-8 rounded-3xl shadow-[0_4px_20px_-2px_rgba(59,39,30,0.05)] flex flex-col items-start gap-space-sm border border-outline-variant/20 hover:border-secondary/30 transition-all duration-300">
+              <div className="w-12 h-12 rounded-2xl bg-tertiary-fixed text-on-tertiary-fixed-variant flex items-center justify-center font-bold text-lg mb-1">
+                <span className="material-symbols-outlined text-[24px]">soup_kitchen</span>
               </div>
-              <h3 className="font-title-md text-title-md text-primary font-semibold">Calienta 10 min y disfruta</h3>
+              <span className="text-xs font-bold uppercase tracking-wider text-secondary bg-surface-container-high px-2.5 py-0.5 rounded-full">
+                Paso 03
+              </span>
+              <h3 className="font-headline-sm text-xl text-primary font-bold">Calienta 10 min y disfruta</h3>
               <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-                Sumerge la bolsa en agua hirviendo (baño maría) durante 8-10 minutos o calienta en sartén. Sirve calientito con tortillas y disfruta sabor de hogar.
+                Sumerge la bolsa en agua hirviendo (baño maría) durante 8-10 minutos o vacía en sartén. Sirve calientito con tortillas y disfruta comida honesta como recién hecha.
               </p>
             </div>
           </div>
@@ -730,7 +784,7 @@ export const HomeView = () => {
                   <img
                     alt="Firma Romi"
                     className="h-9 w-auto object-contain"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3NzzA0KMYrRi2wvRqJzZ6B_mxNl7Pizafq2X9906XlHhcjEiN2j1B5hyg5BiStBbexX7cYb-ETE92DWF7dAsklaSQvliX4WFeeH-UJXdUCd62ISXA4RaqxQRm0SozLb-Ujiw7-fKu1eGwrSOKFnrEC5Vtyp_eHmTPwtQ_VF5nSf1cQKgsWCUV-PP2T4V0kU5aeGgyse6GLgF_lNZCNKwVtIMlknzKhCHy-E6BX_HQ9ATv27K_5VFJg1kmpIcShiHyzw"
+                    src="/images/logo_by_romi.png"
                   />
                 </div>
                 <div>
